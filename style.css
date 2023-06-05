@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid blue;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1fr 2fr 0.5fr;
+    grid-column-gap: 6px;
+    grid-row-gap: 17px;
+}
+
+.parent>div {
+    /* height: 30vmin;
+    width: 20vmin; */
+    border-color: brown;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2vmin;
+}
+
+.div1 {
+    grid-area: 1 / 8 / 2 / 9;
+}
+
+.div2 {
+    grid-area: 1 / 7 / 2 / 8;
+}
+
+.div3 {
+    grid-area: 1 / 6 / 2 / 7;
+}
+
+.div4 {
+    grid-area: 1 / 5 / 2 / 6;
+}
+
+.div5 {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.div6 {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.div7 {
+    grid-area: 2 / 8 / 3 / 9;
+}
+
+.div8 {
+    grid-area: 2 / 7 / 3 / 8;
+}
+
+.div9 {
+    grid-area: 2 / 6 / 3 / 7;
+}
+
+.div10 {
+    grid-area: 2 / 5 / 3 / 6;
+}
+
+.div11 {
+    grid-area: 2 / 4 / 3 / 5;
+}
+
+.div12 {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.div13 {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.div14 {
+    grid-area: 3 / 6 / 4 / 7;
+}
+
+.flipCard {
+    background-color: black;
+}
