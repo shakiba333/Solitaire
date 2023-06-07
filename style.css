@@ -70,3 +70,7 @@ body {
     background-color: azure;
     border: 1px dashed green;
 }
+
+.hideCard {
+    color: transparent;
+}
