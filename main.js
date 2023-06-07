@@ -21,7 +21,15 @@ const PileContainers = [pile1, pile2, pile3, pile4, pile5, pile6, pile7];
 
 // /*----- event listeners -----*/
 
+for (const cardEl of cardEls) {
 
+    cardEl.addEventListener('dragstart', dragStart);
+    cardEl.addEventListener('dragover', dragOver);
+    cardEl.addEventListener('dragenter', dragEnter);
+    cardEl.addEventListener('dragleave', dragLeave);
+    cardEl.addEventListener('drop', dragDrop);
+    cardEl.addEventListener('dragend', dragEnd);
+}
 // /*----- functions -----*/
 
 allocateCards()
@@ -47,13 +55,40 @@ function checkLastChildInPile(containers) {
         const lastChild = containerChildren[containerChildren.length - 1];
         if (lastChild) {
             lastChild.classList.remove('hideCard');
+            lastChild.draggable = true;
         }
     });
 }
 
 
 
+function dragStart(event) {
+    draggedCard = event.target;
+    event.dataTransfer.effectAllowed = 'move';
+    event.target.classList.add('dragging');
+}
+function dragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+}
 
+function dragEnter(event) {
+    event.target.classList.add('drag-over');
+}
 
+function dragLeave(event) {
+    event.target.classList.remove('drag-over');
+}
+function dragDrop(event) {
+    event.preventDefault();
+    event.target.classList.remove('drag-over');
+    event.target.appendChild(draggedCard);
+}
+
+function dragEnd(event) {
+    event.target.classList.remove('dragging');
+    draggedCard = null;
+    checkLastChildInPile(PileContainers);
+}
 
 
