@@ -4,18 +4,16 @@
 }
 
 body {
-    background-color: lavenderblush;
+    background-color: #076324;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 1fr 70% .5fr;
-
-
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1fr 1fr .1fr;
 }
 
 #flexleftOverCardContainer {
     display: flex;
     flex-direction: row;
-    grid-column: 1/3;
+    grid-column: 2/4;
     grid-row: 1/2;
     align-items: center;
     justify-content: center;
@@ -24,56 +22,69 @@ body {
 #flexFoundationContainer {
     display: flex;
     flex-direction: row;
-    grid-column: 4/8;
+    grid-column: 5/9;
     grid-row: 1/2;
     align-items: center;
     justify-content: center;
+
 }
 
 #flextableContainer {
     display: flex;
     flex-direction: row;
-    grid-column: 1/8;
+    grid-column: 2/8;
     grid-row: 2/3;
     align-items: center;
     justify-content: center;
-
 }
 
 .deck {
     position: relative;
-    height: 60vmin;
-    width: 60vmin;
-    border: 2px solid yellowgreen;
+    width: 16vmin;
+    height: 20vmin;
+    border: 2px solid #6E6E6E;
     text-align: center;
-    /* align-items: center;
-    justify-content: center; */
+    margin: 2vmin;
+    background-color: #185A3F;
 }
 
 .piles {
     margin-top: 10vmin;
     position: relative;
-    height: 60vmin;
-    width: 60vmin;
-    border: 2px solid yellow;
+    height: 30vmin;
+    width: 30vmin;
+    border: 2px solid #6E6E6E;
     text-align: center;
 }
 
 .card {
-    /* position: absolute; */
-    /* width: 20vmin;
-    height: 30vmin; */
-    background-color: #f1f1f1;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    position: absolute;
+    width: 14vmin;
+    height: 19vmin;
+    background-color: #F1F1F1;
+    box-shadow: 1px -1px 0px rgba(0, 0, 0, 0.2);
 }
 
+.card+.card {
+    margin-top: 4px;
+    margin-left: 2px;
+}
+
+.card+.card+.card+.card {
+    margin-left: 4px;
+    margin-top: 8px;
+}
+
+.card+.card+.card+.card+.card {
+    margin-left: 6px;
+    margin-top: 12px;
+}
 
 .waste {
-    width: 20vmin;
+    width: 15vmin;
     height: 20vmin;
-    background-color: azure;
-    border: 1px dashed green;
+    background-color: #185A3F;
+    border: 1px dashed #6E6E6E;
 }
 
 .card.dragging {
@@ -89,8 +100,28 @@ body {
 }
 
 .foundationSlots {
-    width: 20vmin;
+    width: 15vmin;
     height: 20vmin;
-    background-color: azure;
-    border: 1px dashed green;
+    background-color: #185A3F;
+    border: 1px dashed #6E6E6E;
+}
+
+#restartButton {
+    grid-row: 3/4;
+    grid-column: 5/6;
+    margin: 2vmin;
+    background-color: #076324;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#restartButton:hover {
+    background-color: red;
 }

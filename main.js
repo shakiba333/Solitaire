@@ -42,7 +42,7 @@ const PileContainers = [pile1, pile2, pile3, pile4, pile5, pile6, pile7];
 const foundationContainer = [found1, found2, found3, found4];
 const deckCards = document.getElementsByClassName('deck');
 const wasteCards = document.getElementsByClassName('waste');
-
+const restartBtn = document.getElementById('restartButton')
 
 
 /*----- event listeners -----*/
@@ -72,11 +72,14 @@ for (const wasteCard of wasteCards) {
         moveCardsToWaste(event);
     });
 }
+restartBtn.addEventListener('click', restartGameBtn);
 // /*----- functions -----*/
 
 allocateCards()
 
-
+function restartGameBtn() {
+    window.location.reload();
+}
 
 function makeLastChildDraggable(event) {
     const card = event.target;
@@ -95,9 +98,10 @@ function makeLastChildDraggable(event) {
     }
 }
 function moveCardsToWaste(event) {
-
     event.target.appendChild(draggedCard);
+    draggedCard.style.position = 'absolute';
     draggedCard.classList.add('hideCard');
+
 }
 function allocateCards() {
     shuffleCards(cards);
@@ -256,5 +260,4 @@ function dragEnd(event) {
     draggedCard = null;
     checkLastChildInPile(PileContainers);
 }
-
 
