@@ -40,6 +40,8 @@ const found4 = document.getElementById('diamonds');
 
 const PileContainers = [pile1, pile2, pile3, pile4, pile5, pile6, pile7];
 const foundationContainer = [found1, found2, found3, found4];
+const deckCards = document.getElementsByClassName('deck');
+const wasteCards = document.getElementsByClassName('waste');
 
 
 
@@ -60,10 +62,43 @@ for (const cardEl of cardEls) {
     cardEl.addEventListener('drop', dragDrop);
     cardEl.addEventListener('dragend', dragEnd);
 }
-
+for (const deckCard of deckCards) {
+    deckCard.addEventListener('click', makeLastChildDraggable);
+}
+for (const wasteCard of wasteCards) {
+    wasteCard.addEventListener('dragover', dragOver);
+    wasteCard.addEventListener('drop', function (event) {
+        event.preventDefault();
+        moveCardsToWaste(event);
+    });
+}
 // /*----- functions -----*/
+
 allocateCards()
 
+
+
+function makeLastChildDraggable(event) {
+    const card = event.target;
+    const parent = card.parentNode;
+    const lastChild = parent.lastElementChild;
+
+    if (card === lastChild) {
+        card.classList.remove('hideCard');
+        card.draggable = true;
+        card.addEventListener('dragstart', dragStart);
+        card.addEventListener('dragover', dragOver);
+        card.addEventListener('dragenter', dragEnter);
+        card.addEventListener('dragleave', dragLeave);
+        card.addEventListener('drop', dragDrop);
+        card.addEventListener('dragend', dragEnd);
+    }
+}
+function moveCardsToWaste(event) {
+
+    event.target.appendChild(draggedCard);
+    draggedCard.classList.add('hideCard');
+}
 function allocateCards() {
     shuffleCards(cards);
 
