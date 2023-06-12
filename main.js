@@ -42,8 +42,8 @@ const PileContainers = [pile1, pile2, pile3, pile4, pile5, pile6, pile7];
 const foundationContainer = [found1, found2, found3, found4];
 const deckCards = document.getElementsByClassName('deck');
 const wasteCards = document.getElementsByClassName('waste');
-const restartBtn = document.getElementById('restartButton')
-
+const restartBtn = document.getElementById('restartButton');
+const msg = document.getElementById('msg');
 
 /*----- event listeners -----*/
 for (const foundationContainer of foundationdationContainers) {
@@ -189,6 +189,8 @@ function compareFoundationEl(event) {
         droppedCard.classList.remove('drag-over');
         droppedCard.appendChild(draggedCard);
         console.log("Element dropped into pile container:", event.target.id);
+    } else {
+        msg.innerText = 'Invalid move, try again!';
     }
 }
 
@@ -201,6 +203,8 @@ function compareElements(event) {
         droppedCard.classList.remove('drag-over');
         droppedCard.appendChild(draggedCard);
         console.log("Element dropped into pile container:", event.target.id);
+    } else {
+        msg.innerText = 'Invalid move, try again!';
     }
 }
 
